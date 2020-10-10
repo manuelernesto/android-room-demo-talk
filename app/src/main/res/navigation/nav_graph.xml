@@ -27,9 +27,17 @@
         android:id="@+id/newFragment"
         android:name="io.github.manuelernesto.androidroomdemo.ui.NewFragment"
         android:label="fragment_new"
-        tools:layout="@layout/fragment_new" >
+        tools:layout="@layout/fragment_new">
         <action
             android:id="@+id/action_newFragment_to_EventFragment"
             app:destination="@id/EventFragment" />
+
+        <argument
+            android:name="Evento"
+            android:defaultValue="@null"
+            app:argType="io.github.manuelernesto.androidroomdemo.data.Evento"
+            app:nullable="true" />
+
+
     </fragment>
 </navigation>

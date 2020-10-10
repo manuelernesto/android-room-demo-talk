@@ -1,60 +1,112 @@
 package io.github.manuelernesto.androidroomdemo.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import io.github.manuelernesto.androidroomdemo.R
+import io.github.manuelernesto.androidroomdemo.data.Evento
+import io.github.manuelernesto.androidroomdemo.data.EventoDB
+import io.github.manuelernesto.androidroomdemo.util.StandardFragment
+import kotlinx.android.synthetic.main.fragment_new.*
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [NewFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class NewFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class NewFragment : StandardFragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var mEvento: Evento? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_new, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment NewFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            NewFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+
+        arguments?.let {
+            mEvento = NewFragmentArgs.fromBundle(it).evento
+
+            mEvento?.let { evento ->
+                ed_nome.setText(evento.titulo)
+                et_descricao.setText(evento.descricao)
+                et_palestrante.setText(evento.palestrante)
+                ed_data.setText(evento.data)
+
+                btn_Salvar.visibility = View.INVISIBLE
+                btn_update.visibility = View.VISIBLE
+                btn_delete.visibility = View.VISIBLE
+            }
+
+            btn_Salvar.setOnClickListener {
+                save()
+            }
+
+            btn_update.setOnClickListener {
+                update()
+            }
+            btn_delete.setOnClickListener {
+                delete()
+            }
+
+        }
+
+
+    }
+
+    private fun update() {
+        launch {
+            context?.let { ctx ->
+                val evento = Evento(
+                    id = mEvento!!.id,
+                    titulo = ed_nome.text.toString(),
+                    descricao = et_descricao.text.toString(),
+                    palestrante = et_palestrante.text.toString(),
+                    data = ed_data.text.toString()
+                )
+
+                EventoDB.getDatabase(ctx).dao().actualizar(evento)
+                Toast.makeText(ctx, "Actualizado com sucesso", Toast.LENGTH_LONG).show()
+
+            }
+        }
+    }
+
+    private fun save() {
+        launch {
+            context?.let { ctx ->
+                val evento = Evento(
+                    titulo = ed_nome.text.toString(),
+                    descricao = et_descricao.text.toString(),
+                    palestrante = et_palestrante.text.toString(),
+                    data = ed_data.text.toString()
+                )
+
+                EventoDB.getDatabase(ctx).dao().salvar(evento)
+                Toast.makeText(ctx, "Salvo com sucesso", Toast.LENGTH_LONG).show()
+            }
+        }
+
+    }
+
+    private fun delete() {
+        AlertDialog.Builder(requireContext()).apply {
+            setTitle("Deseja apagar?")
+            setNegativeButton("Não") { _, _ ->
+
+            }
+            setPositiveButton("Sim") { _, _ ->
+                launch {
+                    context.let {
+                        EventoDB.getDatabase(it).dao().apagar(mEvento!!)
+                    }
                 }
             }
+        }.create().show()
     }
 }

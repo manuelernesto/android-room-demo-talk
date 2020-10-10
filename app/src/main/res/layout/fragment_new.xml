@@ -61,7 +61,7 @@
 
     <Button
 
-        android:id="@+id/button"
+        android:id="@+id/btn_Salvar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -69,13 +69,14 @@
         android:text="@string/salvar_txt"
         android:textAllCaps="false"
         android:textColor="@color/design_default_color_on_primary"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="@+id/button2" />
+        app:layout_constraintBottom_toTopOf="@+id/btn_update"
+        app:layout_constraintEnd_toEndOf="@+id/btn_update"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_update" />
 
     <Button
         android:visibility="invisible"
-        android:id="@+id/button2"
+        android:id="@+id/btn_update"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -83,13 +84,13 @@
         android:text="@string/actualizar_txt"
         android:textAllCaps="false"
         android:textColor="@color/design_default_color_on_primary"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/button3" />
+        app:layout_constraintBottom_toTopOf="@+id/btn_delete"
+        app:layout_constraintEnd_toEndOf="@+id/btn_delete"
+        app:layout_constraintStart_toStartOf="@+id/btn_delete" />
 
     <Button
         android:visibility="invisible"
-        android:id="@+id/button3"
+        android:id="@+id/btn_delete"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
