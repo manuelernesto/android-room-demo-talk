@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="io.github.manuelernesto.androidroomdemo.HomeFragment"
-        android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_home">
 
         <action
@@ -18,7 +17,7 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="io.github.manuelernesto.androidroomdemo.EventsFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/events_txt"
         tools:layout="@layout/fragment_events">
 
         <action
