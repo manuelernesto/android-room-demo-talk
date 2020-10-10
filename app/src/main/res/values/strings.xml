@@ -9,4 +9,8 @@
     <string name="apagar_txt">Apagar</string>
     <string name="actualizar_txt">Actualizar</string>
     <string name="salvar_txt">Salvar</string>
+    <string name="lorem_ipsum_dolor">Lorem ipsum dolor</string>
+    <string name="lorem_ipsum_dolor_sit_amet_consetetur_sadipscing_elitr_sed_diam_nonumy_eirmod_tempor_invidunt_ut_labore_et_dolore_magna_aliquyam_erat_sed_diam_voluptua_at_vero_eos_et">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et.</string>
+    <string name="manuel_ernesto">Manuel Ernesto</string>
+    <string name="_10_10_2020">10-10-2020</string>
 </resources>
