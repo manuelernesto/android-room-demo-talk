@@ -7,22 +7,18 @@
     tools:context=".HomeFragment">
 
     <TextView
-        android:id="@+id/textview_first"
+        android:id="@+id/txt_title_event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_first_fragment"
-        app:layout_constraintBottom_toTopOf="@id/button_first"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/eventos"
+        android:textAllCaps="true"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="332dp" />
 
     <Button
         android:id="@+id/button_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first" />
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="649dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
