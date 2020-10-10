@@ -2,4 +2,11 @@
     <string name="app_name">Disruption Eventos</string>
     <string name="events_txt">eventos</string>
     <string name="start_txt">Começar</string>
+    <string name="titulo_txt">Título</string>
+    <string name="descricao_txt">Descrição</string>
+    <string name="palestrante_txt">Palestrante</string>
+    <string name="data_txt">Data</string>
+    <string name="apagar_txt">Apagar</string>
+    <string name="actualizar_txt">Actualizar</string>
+    <string name="salvar_txt">Salvar</string>
 </resources>

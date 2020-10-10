@@ -3,25 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/HomeFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/HomeFragment"
         android:name="io.github.manuelernesto.androidroomdemo.HomeFragment"
         tools:layout="@layout/fragment_home">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_HomeFragment_to_EventFragment"
+            app:destination="@id/EventFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/EventFragment"
         android:name="io.github.manuelernesto.androidroomdemo.EventsFragment"
         android:label="@string/events_txt"
         tools:layout="@layout/fragment_events">
-
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_EventFragment_to_newFragment"
+            app:destination="@id/newFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newFragment"
+        android:name="io.github.manuelernesto.androidroomdemo.NewFragment"
+        android:label="fragment_new"
+        tools:layout="@layout/fragment_new" >
+        <action
+            android:id="@+id/action_newFragment_to_EventFragment"
+            app:destination="@id/EventFragment" />
     </fragment>
 </navigation>
