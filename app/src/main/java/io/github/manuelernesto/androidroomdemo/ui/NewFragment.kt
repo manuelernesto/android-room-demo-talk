@@ -4,15 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.Navigation
 import io.github.manuelernesto.androidroomdemo.R
-import io.github.manuelernesto.androidroomdemo.data.Evento
-import io.github.manuelernesto.androidroomdemo.data.EventoDB
 import io.github.manuelernesto.androidroomdemo.util.StandardFragment
 import kotlinx.android.synthetic.main.fragment_new.*
-import kotlinx.coroutines.launch
 import java.util.*
 
 

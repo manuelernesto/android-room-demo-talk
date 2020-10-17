@@ -4,14 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.manuelernesto.androidroomdemo.R
-import io.github.manuelernesto.androidroomdemo.data.EventoDB
 import io.github.manuelernesto.androidroomdemo.util.StandardFragment
 import kotlinx.android.synthetic.main.fragment_events.*
-import kotlinx.coroutines.launch
 
 
 class EventsFragment : StandardFragment() {
