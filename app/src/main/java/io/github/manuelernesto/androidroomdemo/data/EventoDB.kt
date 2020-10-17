@@ -5,10 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Evento::class], version = 1)
+@Database(entities = [], version = 1)
 abstract class EventoDB : RoomDatabase() {
 
-    abstract fun dao(): EventoDAO
 
     companion object {
         @Volatile

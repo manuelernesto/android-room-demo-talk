@@ -26,16 +26,6 @@ class EventsFragment : StandardFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        rv_events.setHasFixedSize(true)
-        rv_events.layoutManager = LinearLayoutManager(context)
-
-        launch {
-            context?.let {
-                val eventos = EventoDB.getDatabase(it).dao().buscarTodos()
-                rv_events.adapter = EventoAdapter(eventos)
-            }
-        }
-
         fab_new.setOnClickListener {
             findNavController().navigate(R.id.action_EventFragment_to_newFragment)
         }

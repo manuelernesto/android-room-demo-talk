@@ -1,109 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.NewFragment">
 
-    <EditText
-        android:id="@+id/ed_nome"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:ems="10"
-        android:hint="@string/titulo_txt"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/ed_nome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:ems="10"
+            android:hint="@string/titulo_txt"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_descricao"
-        android:layout_width="402dp"
-        android:layout_height="149dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:gravity="start|bottom"
-        android:hint="@string/descricao_txt"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="@+id/ed_nome"
-        app:layout_constraintStart_toStartOf="@+id/ed_nome"
-        app:layout_constraintTop_toBottomOf="@+id/ed_nome" />
+        <EditText
+            android:id="@+id/et_descricao"
+            android:layout_width="390dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:gravity="start|bottom"
+            android:hint="@string/descricao_txt"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="@+id/ed_nome"
+            app:layout_constraintStart_toStartOf="@+id/ed_nome"
+            app:layout_constraintTop_toBottomOf="@+id/ed_nome" />
 
-    <EditText
-        android:id="@+id/et_palestrante"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="@string/palestrante_txt"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/et_descricao"
-        app:layout_constraintStart_toStartOf="@+id/et_descricao"
-        app:layout_constraintTop_toBottomOf="@+id/et_descricao" />
+        <EditText
+            android:id="@+id/et_palestrante"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="@string/palestrante_txt"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/et_descricao"
+            app:layout_constraintStart_toStartOf="@+id/et_descricao"
+            app:layout_constraintTop_toBottomOf="@+id/et_descricao" />
 
-    <EditText
-        android:id="@+id/ed_data"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="@string/data_txt"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="@+id/et_palestrante"
-        app:layout_constraintStart_toStartOf="@+id/et_palestrante"
-        app:layout_constraintTop_toBottomOf="@+id/et_palestrante" />
 
-    <Button
+        <CalendarView
+            android:id="@+id/ed_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="@string/data_txt"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="@+id/et_palestrante"
+            app:layout_constraintStart_toStartOf="@+id/et_palestrante"
+            app:layout_constraintTop_toBottomOf="@+id/et_palestrante" />
 
-        android:id="@+id/btn_Salvar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@color/colorAccent"
-        android:text="@string/salvar_txt"
-        android:textAllCaps="false"
-        android:textColor="@color/design_default_color_on_primary"
-        app:layout_constraintBottom_toTopOf="@+id/btn_update"
-        app:layout_constraintEnd_toEndOf="@+id/btn_update"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_update" />
+        <Button
+            android:id="@+id/btn_Salvar"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@color/colorAccent"
+            android:text="@string/salvar_txt"
+            android:textAllCaps="false"
+            android:textColor="@color/design_default_color_on_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_data" />
 
-    <Button
-        android:visibility="invisible"
-        android:id="@+id/btn_update"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@color/colorAccent"
-        android:text="@string/actualizar_txt"
-        android:textAllCaps="false"
-        android:textColor="@color/design_default_color_on_primary"
-        app:layout_constraintBottom_toTopOf="@+id/btn_delete"
-        app:layout_constraintEnd_toEndOf="@+id/btn_delete"
-        app:layout_constraintStart_toStartOf="@+id/btn_delete" />
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@color/colorAccent"
+            android:text="@string/actualizar_txt"
+            android:textAllCaps="false"
+            android:textColor="@color/design_default_color_on_primary"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_Salvar" />
 
-    <Button
-        android:visibility="invisible"
-        android:id="@+id/btn_delete"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="32dp"
-        android:background="@color/coloRed"
-        android:text="@string/apagar_txt"
-        android:textAllCaps="false"
-        android:textColor="@color/design_default_color_on_primary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/coloRed"
+            android:text="@string/apagar_txt"
+            android:textAllCaps="false"
+            android:textColor="@color/design_default_color_on_primary"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_update" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

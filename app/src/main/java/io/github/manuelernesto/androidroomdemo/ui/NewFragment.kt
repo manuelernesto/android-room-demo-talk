@@ -6,17 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.Navigation
 import io.github.manuelernesto.androidroomdemo.R
 import io.github.manuelernesto.androidroomdemo.data.Evento
 import io.github.manuelernesto.androidroomdemo.data.EventoDB
 import io.github.manuelernesto.androidroomdemo.util.StandardFragment
 import kotlinx.android.synthetic.main.fragment_new.*
 import kotlinx.coroutines.launch
+import java.util.*
 
 
 class NewFragment : StandardFragment() {
-
-    private var mEvento: Evento? = null
+    private var mData: Long? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,70 +28,33 @@ class NewFragment : StandardFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-
-        arguments?.let {
-            mEvento = NewFragmentArgs.fromBundle(it).evento
-
-            mEvento?.let { evento ->
-                ed_nome.setText(evento.titulo)
-                et_descricao.setText(evento.descricao)
-                et_palestrante.setText(evento.palestrante)
-                ed_data.setText(evento.data)
-
-                btn_Salvar.visibility = View.INVISIBLE
-                btn_update.visibility = View.VISIBLE
-                btn_delete.visibility = View.VISIBLE
-            }
-
-            btn_Salvar.setOnClickListener {
-                save()
-            }
-
-            btn_update.setOnClickListener {
-                update()
-            }
-            btn_delete.setOnClickListener {
-                delete()
-            }
-
+        ed_data.date = System.currentTimeMillis()
+        ed_data.setOnDateChangeListener { _, year, month, day ->
+            val calendar = Calendar.getInstance()
+            calendar.set(year, month, day)
+            mData = calendar.timeInMillis
         }
 
+
+        btn_Salvar.setOnClickListener {
+            save()
+        }
+
+        btn_update.setOnClickListener {
+            update()
+        }
+        btn_delete.setOnClickListener {
+            delete()
+        }
 
     }
 
+
     private fun update() {
-        launch {
-            context?.let { ctx ->
-                val evento = Evento(
-                    id = mEvento!!.id,
-                    titulo = ed_nome.text.toString(),
-                    descricao = et_descricao.text.toString(),
-                    palestrante = et_palestrante.text.toString(),
-                    data = ed_data.text.toString()
-                )
 
-                EventoDB.getDatabase(ctx).dao().actualizar(evento)
-                Toast.makeText(ctx, "Actualizado com sucesso", Toast.LENGTH_LONG).show()
-
-            }
-        }
     }
 
     private fun save() {
-        launch {
-            context?.let { ctx ->
-                val evento = Evento(
-                    titulo = ed_nome.text.toString(),
-                    descricao = et_descricao.text.toString(),
-                    palestrante = et_palestrante.text.toString(),
-                    data = ed_data.text.toString()
-                )
-
-                EventoDB.getDatabase(ctx).dao().salvar(evento)
-                Toast.makeText(ctx, "Salvo com sucesso", Toast.LENGTH_LONG).show()
-            }
-        }
 
     }
 
@@ -101,12 +65,22 @@ class NewFragment : StandardFragment() {
 
             }
             setPositiveButton("Sim") { _, _ ->
-                launch {
-                    context.let {
-                        EventoDB.getDatabase(it).dao().apagar(mEvento!!)
-                    }
-                }
+
+
             }
         }.create().show()
+    }
+
+    private fun cleanField() {
+        ed_nome.setText("")
+        et_descricao.setText("")
+        et_palestrante.setText("")
+        ed_data.date = System.currentTimeMillis()
+    }
+
+    private fun goToMain() {
+        val action = NewFragmentDirections.actionNewFragmentToEventFragment()
+        Navigation.findNavController(requireView())
+            .navigate(action)
     }
 }
