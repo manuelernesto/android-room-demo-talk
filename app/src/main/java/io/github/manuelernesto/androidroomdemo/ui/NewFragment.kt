@@ -1,6 +1,7 @@
 package io.github.manuelernesto.androidroomdemo.ui
 
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,7 @@ import java.util.*
 
 class NewFragment : StandardFragment() {
     private var mData: Long? = null
+    private var mEvento: Evento? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +37,9 @@ class NewFragment : StandardFragment() {
             mData = calendar.timeInMillis
         }
 
+        arguments?.let {
+            setEventWithArgs(it)
+        }
 
         btn_Salvar.setOnClickListener {
             save()
@@ -51,7 +56,21 @@ class NewFragment : StandardFragment() {
 
 
     private fun update() {
+        launch {
+            context?.let {
+                val evento = Evento(
+                    id = mEvento!!.id,
+                    titulo = ed_nome.text.toString(),
+                    descricao = et_descricao.text.toString(),
+                    palestrante = et_palestrante.text.toString(),
+                    // data = ed_data.text.toString()
+                )
 
+                EventoDB.getDatabase(it).dao().actualizar(evento)
+                Toast.makeText(it, "Actualizado com sucesso", Toast.LENGTH_LONG).show()
+                goToMain()
+            }
+        }
     }
 
     private fun save() {
@@ -78,10 +97,37 @@ class NewFragment : StandardFragment() {
 
             }
             setPositiveButton("Sim") { _, _ ->
-
+                launch {
+                    context.let {
+                        EventoDB.getDatabase(it).dao().apagar(mEvento!!)
+                        Toast.makeText(it, "Apagado com sucesso", Toast.LENGTH_LONG).show()
+                        goToMain()
+                    }
+                }
 
             }
         }.create().show()
+    }
+
+    private fun setEventWithArgs(bundle: Bundle) {
+        val calendar = Calendar.getInstance()
+        val dateFormat = DateFormat.getDateFormat(requireContext())
+
+        mEvento = NewFragmentArgs.fromBundle(bundle).evento
+
+        mEvento?.let {
+
+            calendar.timeInMillis = it.data
+
+            ed_nome.setText(it.titulo)
+            et_descricao.setText(it.descricao)
+            et_palestrante.setText(it.palestrante)
+            // ed_data.date = dateFormat.format(calendar.time)
+
+            btn_Salvar.visibility = View.INVISIBLE
+            btn_update.visibility = View.VISIBLE
+            btn_delete.visibility = View.VISIBLE
+        }
     }
 
     private fun cleanField() {

@@ -32,11 +32,11 @@
             android:id="@+id/action_newFragment_to_EventFragment"
             app:destination="@id/EventFragment" />
 
-<!--        <argument-->
-<!--            android:name="Evento"-->
-<!--            android:defaultValue="@null"-->
-<!--            app:argType="io.github.manuelernesto.androidroomdemo.data.Evento"-->
-<!--            app:nullable="true" />-->
+        <argument
+            android:name="Evento"
+            android:defaultValue="@null"
+            app:argType="io.github.manuelernesto.androidroomdemo.data.Evento"
+            app:nullable="true" />
 
 
     </fragment>
