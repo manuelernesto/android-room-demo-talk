@@ -63,7 +63,7 @@ class NewFragment : StandardFragment() {
                     titulo = ed_nome.text.toString(),
                     descricao = et_descricao.text.toString(),
                     palestrante = et_palestrante.text.toString(),
-                    // data = ed_data.text.toString()
+                    data = mData!!
                 )
 
                 EventoDB.getDatabase(it).dao().actualizar(evento)
@@ -110,19 +110,15 @@ class NewFragment : StandardFragment() {
     }
 
     private fun setEventWithArgs(bundle: Bundle) {
-        val calendar = Calendar.getInstance()
-        val dateFormat = DateFormat.getDateFormat(requireContext())
 
         mEvento = NewFragmentArgs.fromBundle(bundle).evento
 
         mEvento?.let {
 
-            calendar.timeInMillis = it.data
-
             ed_nome.setText(it.titulo)
             et_descricao.setText(it.descricao)
             et_palestrante.setText(it.palestrante)
-            // ed_data.date = dateFormat.format(calendar.time)
+            ed_data.date = it.data
 
             btn_Salvar.visibility = View.INVISIBLE
             btn_update.visibility = View.VISIBLE
